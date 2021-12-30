@@ -33,7 +33,33 @@ namespace GUI
         void Sort()
         {
             var wordList = new List<string>(textBoxWordList.Text.Split('\n'));
+            //TODO Resolve a bug: two words are connected to one word
             WordSorting.WordSorting.Sort(comboBoxLanguages.SelectedText, wordList);
+
+            sortedList = WordSorting.WordSorting.SortedList;
+
+            //TODO Find a better way to do this
+            string sortedText = "";
+            foreach (var word in sortedList)
+            {
+                if (sortedText.Length == 0)
+                {
+                    sortedText = word + "\n";
+                    continue;
+                }
+
+                sortedText += (word+"\n");
+            }
+
+            textBoxSortedList.Text = sortedText;
+
+            buttonClear.Enabled = true;
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            textBoxSortedList.Clear();
+            buttonClear.Enabled = false;
         }
     }
 }
