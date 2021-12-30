@@ -19,7 +19,7 @@ namespace GUI
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
-
+            //Sort();
         }
     }
 }

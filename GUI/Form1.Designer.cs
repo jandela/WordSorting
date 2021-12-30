@@ -66,6 +66,7 @@ namespace GUI
             // 
             // buttonSort
             // 
+            this.buttonSort.Enabled = false;
             this.buttonSort.Location = new System.Drawing.Point(159, 378);
             this.buttonSort.Name = "buttonSort";
             this.buttonSort.Size = new System.Drawing.Size(69, 27);
@@ -135,6 +136,7 @@ namespace GUI
             // 
             // buttonClear
             // 
+            this.buttonClear.Enabled = false;
             this.buttonClear.Location = new System.Drawing.Point(239, 375);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(74, 30);
