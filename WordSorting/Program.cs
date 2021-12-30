@@ -26,10 +26,21 @@ namespace WordSorting
 
             var language = "Croatian";
 
-            var sort = new WordSorting();
-            sort.Sort(language, text);
+            WordSorting.Sort(language, text);
+
+            Display(text, language);
 
             Console.ReadKey(false);
+        }
+
+        static void Display(List<string> textList, string language)
+        {
+            Console.WriteLine(language);
+            foreach (var line in textList)
+            {
+                Console.WriteLine(line);
+            }
+            Console.WriteLine();
         }
     }
 }

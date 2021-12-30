@@ -8,6 +8,7 @@ using System.Text;
 using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WordSorting;
 
 namespace GUI
 {
@@ -32,22 +33,7 @@ namespace GUI
         void Sort()
         {
             var wordList = new List<string>(textBoxWordList.Text.Split('\n'));
-            
-            if (wordList == null || wordList.Count == 0)
-                throw new InvalidOperationException("List is empty!");
-
-            //select a Language:
-            var languages = CultureInfo.GetCultures( CultureTypes.AllCultures);
-            var language = languages.FirstOrDefault(culture => culture.EnglishName.Contains(comboBoxLanguages.SelectedText));
-            //CultureInfo languageInfo = new CultureInfo(comboBoxLanguages.Text);
-            if (language == null)
-                throw new InvalidOperationException("Language does not exist!");
-            StringComparer languageComp = StringComparer.Create(language, true);
-
-            //foreach (var line in textBoxWordList.Text)
-            //{
-
-            //}
+            WordSorting.WordSorting.Sort(comboBoxLanguages.SelectedText, wordList);
         }
     }
 }

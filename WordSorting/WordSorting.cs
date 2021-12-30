@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace WordSorting
 {
-    public class WordSorting
+    public static class WordSorting
     {
-        private CultureInfo language; 
-        public void Sort(string languageName, List<string> textList)
+        private static CultureInfo language;
+        public static List<string> SortedList { get; private set; }
+
+        public static void Sort(string languageName, List<string> textList)
         {
             SelectCulture(languageName);
 
@@ -21,25 +23,14 @@ namespace WordSorting
             var langComp = StringComparer.Create(language, true);
             
             textList.Sort(langComp);
-
-            Display(textList, language.EnglishName);
+            SortedList = textList;
         }
 
-        private void SelectCulture(string languageName)
+        private static void SelectCulture(string languageName)
         {
             //select a Language:
             var languages = CultureInfo.GetCultures(CultureTypes.AllCultures);
             language = languages.FirstOrDefault(culture => culture.EnglishName.Contains(languageName));
-        }
-
-        private void Display(List<string> textList, string language)
-        {
-            Console.WriteLine(language);
-            foreach (var line in textList)
-            {
-                Console.WriteLine(line);
-            }
-            Console.WriteLine();
         }
 
     }
