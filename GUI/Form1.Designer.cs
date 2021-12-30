@@ -104,6 +104,7 @@ namespace GUI
             this.comboBoxLanguages.Name = "comboBoxLanguages";
             this.comboBoxLanguages.Size = new System.Drawing.Size(198, 24);
             this.comboBoxLanguages.TabIndex = 1;
+            this.comboBoxLanguages.SelectedIndexChanged += new System.EventHandler(this.comboBoxLanguages_SelectedIndexChanged);
             // 
             // groupBoxInsert
             // 
