@@ -8,7 +8,6 @@ using System.Text;
 using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WordSorting;
 
 namespace GUI
 {
@@ -29,31 +28,57 @@ namespace GUI
             buttonSort.Enabled = true;
         }
 
-        private IList<string> sortedList;
+        private static CultureInfo language;
+        private static List<string> sortedList;
+
         void Sort()
         {
-            var wordList = new List<string>(textBoxWordList.Text.Split('\n'));
-            //TODO Resolve a bug: two words are connected to one word
-            WordSorting.WordSorting.Sort(comboBoxLanguages.SelectedText, wordList);
+            List<string> wordList = GetInputList();
 
-            sortedList = WordSorting.WordSorting.SortedList;
+            SortListByLanguage(comboBoxLanguages.SelectedText, wordList);
 
-            //TODO Find a better way to do this
-            string sortedText = "";
-            foreach (var word in sortedList)
-            {
-                if (sortedText.Length == 0)
-                {
-                    sortedText = word + "\n";
-                    continue;
-                }
-
-                sortedText += (word+"\n");
-            }
-
-            textBoxSortedList.Text = sortedText;
+            textBoxSortedList.Text = string.Join("\n", sortedList);
 
             buttonClear.Enabled = true;
+        }
+
+        private List<string> GetInputList()
+        {
+            var wordList = new List<string>(textBoxWordList.Text.Split('\n'));
+
+            // Check if the last element has \r. If not, add it.
+            var lastElement = wordList.Last();
+            if (!lastElement.Contains('\r'))
+            {
+                wordList.RemoveAt(wordList.Count - 1);
+                wordList.Add(lastElement + "\r");
+            }
+
+            return wordList;
+        }
+
+        public static void SortListByLanguage(string languageName, List<string> textList)
+        {
+            SelectCulture(languageName);
+            sortedList = textList;
+
+            if (language == null)
+                throw new InvalidOperationException("Language does not exist!");
+
+            var langComp = StringComparer.Create(language, true);
+
+            sortedList.Sort(langComp);
+        }
+
+        private static void SelectCulture(string languageName)
+        {
+            //select a Language:
+            var languages = CultureInfo.GetCultures(CultureTypes.AllCultures);
+            foreach(var culture in languages)
+            {
+                if (culture.EnglishName.Contains(languageName))
+                    language = culture;
+            }
         }
 
         private void buttonClear_Click(object sender, EventArgs e)

@@ -142,7 +142,7 @@ namespace GUI
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(74, 30);
             this.buttonClear.TabIndex = 0;
-            this.buttonClear.Text = "Clear";
+            this.buttonClear.Text = "&Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
