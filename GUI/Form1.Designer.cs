@@ -66,6 +66,7 @@ namespace GUI
             // 
             // buttonSort
             // 
+            this.buttonSort.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonSort.Enabled = false;
             this.buttonSort.Location = new System.Drawing.Point(159, 378);
             this.buttonSort.Name = "buttonSort";
@@ -77,6 +78,7 @@ namespace GUI
             // 
             // groupBoxLanguages
             // 
+            this.groupBoxLanguages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxLanguages.Controls.Add(this.comboBoxLanguages);
             this.groupBoxLanguages.Location = new System.Drawing.Point(16, 285);
             this.groupBoxLanguages.Name = "groupBoxLanguages";
@@ -89,17 +91,6 @@ namespace GUI
             // 
             this.comboBoxLanguages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxLanguages.FormattingEnabled = true;
-            this.comboBoxLanguages.Items.AddRange(new object[] {
-            "Chinese",
-            "Croatian",
-            "Dutch",
-            "English",
-            "French",
-            "German",
-            "Italian",
-            "Japanese",
-            "Korean",
-            "Spanish"});
             this.comboBoxLanguages.Location = new System.Drawing.Point(14, 30);
             this.comboBoxLanguages.Name = "comboBoxLanguages";
             this.comboBoxLanguages.Size = new System.Drawing.Size(198, 24);
@@ -108,6 +99,7 @@ namespace GUI
             // 
             // groupBoxInsert
             // 
+            this.groupBoxInsert.AutoSize = true;
             this.groupBoxInsert.Controls.Add(this.textBoxWordList);
             this.groupBoxInsert.Location = new System.Drawing.Point(15, 15);
             this.groupBoxInsert.Name = "groupBoxInsert";
@@ -118,6 +110,9 @@ namespace GUI
             // 
             // textBoxWordList
             // 
+            this.textBoxWordList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxWordList.Location = new System.Drawing.Point(6, 21);
             this.textBoxWordList.Multiline = true;
             this.textBoxWordList.Name = "textBoxWordList";
@@ -127,6 +122,9 @@ namespace GUI
             // 
             // textBoxSortedList
             // 
+            this.textBoxSortedList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSortedList.Location = new System.Drawing.Point(14, 30);
             this.textBoxSortedList.Multiline = true;
             this.textBoxSortedList.Name = "textBoxSortedList";
@@ -137,6 +135,7 @@ namespace GUI
             // 
             // buttonClear
             // 
+            this.buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonClear.Enabled = false;
             this.buttonClear.Location = new System.Drawing.Point(239, 375);
             this.buttonClear.Name = "buttonClear";
@@ -152,9 +151,14 @@ namespace GUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(619, 450);
             this.Controls.Add(this.splitContainer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.HelpButton = true;
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Word Sorting";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Word Sorter";
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

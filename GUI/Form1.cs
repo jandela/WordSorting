@@ -16,11 +16,25 @@ namespace GUI
         public Form1()
         {
             InitializeComponent();
+            Languages = CultureInfo.GetCultures(CultureTypes.NeutralCultures);
+            IEnumerable<string> allCultures = Languages.Select(lang => lang.EnglishName);
+            var languageList = from lang in allCultures
+                               orderby lang
+                               select lang;
+
+            this.comboBoxLanguages.Items.AddRange(languageList.ToArray());
         }
+
+        private readonly CultureInfo[] Languages;
+        private CultureInfo language;
+        private List<string> sortedList;
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
-            Sort();
+            if (textBoxWordList.Text.Length == 0)
+                MessageBox.Show("Text is empty!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+                Sort();
         }
 
         private void comboBoxLanguages_SelectedIndexChanged(object sender, EventArgs e)
@@ -28,57 +42,39 @@ namespace GUI
             buttonSort.Enabled = true;
         }
 
-        private static CultureInfo language;
-        private static List<string> sortedList;
-
         void Sort()
         {
             List<string> wordList = GetInputList();
 
-            SortListByLanguage(comboBoxLanguages.SelectedText, wordList);
+            SortListByLanguage(comboBoxLanguages.SelectedItem.ToString(), wordList);
 
-            textBoxSortedList.Text = string.Join("\n", sortedList);
+            textBoxSortedList.Text = string.Join(Environment.NewLine, sortedList);
 
             buttonClear.Enabled = true;
         }
 
+        
         private List<string> GetInputList()
         {
-            var wordList = new List<string>(textBoxWordList.Text.Split('\n'));
-
-            // Check if the last element has \r. If not, add it.
-            var lastElement = wordList.Last();
-            if (!lastElement.Contains('\r'))
-            {
-                wordList.RemoveAt(wordList.Count - 1);
-                wordList.Add(lastElement + "\r");
-            }
-
+            var wordList = new List<string>(textBoxWordList.Text.Split(new char[] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries));
+            
             return wordList;
         }
 
-        public static void SortListByLanguage(string languageName, List<string> textList)
+        private void SortListByLanguage(string languageName, List<string> textList)
         {
             SelectCulture(languageName);
             sortedList = textList;
-
-            if (language == null)
-                throw new InvalidOperationException("Language does not exist!");
 
             var langComp = StringComparer.Create(language, true);
 
             sortedList.Sort(langComp);
         }
 
-        private static void SelectCulture(string languageName)
+        private void SelectCulture(string languageName)
         {
             //select a Language:
-            var languages = CultureInfo.GetCultures(CultureTypes.AllCultures);
-            foreach(var culture in languages)
-            {
-                if (culture.EnglishName.Contains(languageName))
-                    language = culture;
-            }
+            language = Languages.FirstOrDefault(x => x.EnglishName.Equals(languageName));
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
