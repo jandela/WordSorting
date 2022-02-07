@@ -31,13 +31,13 @@ namespace GUI
         {
             this.groupBoxChoice = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxPath = new System.Windows.Forms.GroupBox();
             this.buttonBrowse = new System.Windows.Forms.Button();
             this.textBoxFile = new System.Windows.Forms.TextBox();
             this.labelFile = new System.Windows.Forms.Label();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBoxChoice.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxPath.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxChoice
@@ -60,19 +60,20 @@ namespace GUI
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(230, 24);
             this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // groupBox1
+            // groupBoxPath
             // 
-            this.groupBox1.Controls.Add(this.buttonBrowse);
-            this.groupBox1.Controls.Add(this.textBoxFile);
-            this.groupBox1.Controls.Add(this.labelFile);
-            this.groupBox1.Enabled = false;
-            this.groupBox1.Location = new System.Drawing.Point(40, 168);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(279, 77);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "&Choose path to a file:";
+            this.groupBoxPath.Controls.Add(this.buttonBrowse);
+            this.groupBoxPath.Controls.Add(this.textBoxFile);
+            this.groupBoxPath.Controls.Add(this.labelFile);
+            this.groupBoxPath.Enabled = false;
+            this.groupBoxPath.Location = new System.Drawing.Point(40, 168);
+            this.groupBoxPath.Name = "groupBoxPath";
+            this.groupBoxPath.Size = new System.Drawing.Size(279, 77);
+            this.groupBoxPath.TabIndex = 1;
+            this.groupBoxPath.TabStop = false;
+            this.groupBoxPath.Text = "&Choose path to a file:";
             // 
             // buttonBrowse
             // 
@@ -113,17 +114,19 @@ namespace GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(362, 284);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxPath);
             this.Controls.Add(this.groupBoxChoice);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormChoice";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Word Sorter";
+            this.Load += new System.EventHandler(this.FormChoice_Load);
             this.groupBoxChoice.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxPath.ResumeLayout(false);
+            this.groupBoxPath.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -132,7 +135,7 @@ namespace GUI
 
         private System.Windows.Forms.GroupBox groupBoxChoice;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxPath;
         private System.Windows.Forms.Button buttonBrowse;
         private System.Windows.Forms.TextBox textBoxFile;
         private System.Windows.Forms.Label labelFile;

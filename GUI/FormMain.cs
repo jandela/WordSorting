@@ -90,5 +90,20 @@ namespace GUI
             sourceChoice.Location = this.Location;
             sourceChoice.Show();
         }
+
+        private void buttonMenu_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+            // Show Initial Form (form choice)
+        }
+
+        private void ClearForm()
+        {
+            textBoxWordList.Clear();
+            textBoxSortedList.Clear();
+            buttonClear.Enabled = false;
+            buttonSort.Enabled = false;
+            Enabled = false;
+        }
     }
 }

@@ -37,6 +37,7 @@ namespace GUI
             this.textBoxWordList = new System.Windows.Forms.TextBox();
             this.textBoxSortedList = new System.Windows.Forms.TextBox();
             this.buttonClear = new System.Windows.Forms.Button();
+            this.buttonMenu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -58,6 +59,7 @@ namespace GUI
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.buttonMenu);
             this.splitContainer1.Panel2.Controls.Add(this.textBoxSortedList);
             this.splitContainer1.Panel2.Controls.Add(this.buttonClear);
             this.splitContainer1.Size = new System.Drawing.Size(594, 426);
@@ -146,6 +148,18 @@ namespace GUI
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
+            // buttonMenu
+            // 
+            this.buttonMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMenu.Enabled = false;
+            this.buttonMenu.Location = new System.Drawing.Point(14, 375);
+            this.buttonMenu.Name = "buttonMenu";
+            this.buttonMenu.Size = new System.Drawing.Size(74, 30);
+            this.buttonMenu.TabIndex = 2;
+            this.buttonMenu.Text = "&Menu";
+            this.buttonMenu.UseVisualStyleBackColor = true;
+            this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -181,6 +195,7 @@ namespace GUI
         private System.Windows.Forms.TextBox textBoxSortedList;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.ComboBox comboBoxLanguages;
+        private System.Windows.Forms.Button buttonMenu;
     }
 }
 

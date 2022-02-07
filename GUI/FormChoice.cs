@@ -24,6 +24,28 @@ namespace GUI
             if (result == DialogResult.OK)
             {
                 this.textBoxFile.Text = this.openFileDialog.FileName;
+                // Load data to main text box
+                Hide();
+            }
+        }
+
+        private void FormChoice_Load(object sender, EventArgs e)
+        {
+            // Enable Main form
+            Hide();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem.Equals("File"))
+            {
+                groupBoxPath.Enabled = true;
+            }
+            else
+            {
+                groupBoxPath.Enabled = false;
+                // Enable Main form
+                Hide();
             }
         }
     }
