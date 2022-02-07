@@ -38,6 +38,8 @@ namespace GUI
             this.textBoxSortedList = new System.Windows.Forms.TextBox();
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -53,13 +55,14 @@ namespace GUI
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.buttonMenu);
             this.splitContainer1.Panel1.Controls.Add(this.buttonSort);
             this.splitContainer1.Panel1.Controls.Add(this.groupBoxLanguages);
             this.splitContainer1.Panel1.Controls.Add(this.groupBoxInsert);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.buttonMenu);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonSave);
             this.splitContainer1.Panel2.Controls.Add(this.textBoxSortedList);
             this.splitContainer1.Panel2.Controls.Add(this.buttonClear);
             this.splitContainer1.Size = new System.Drawing.Size(594, 426);
@@ -151,13 +154,31 @@ namespace GUI
             // buttonMenu
             // 
             this.buttonMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMenu.Location = new System.Drawing.Point(14, 375);
+            this.buttonMenu.Location = new System.Drawing.Point(30, 378);
             this.buttonMenu.Name = "buttonMenu";
             this.buttonMenu.Size = new System.Drawing.Size(74, 30);
             this.buttonMenu.TabIndex = 2;
             this.buttonMenu.Text = "&Menu";
             this.buttonMenu.UseVisualStyleBackColor = true;
             this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSave.Enabled = false;
+            this.buttonSave.Location = new System.Drawing.Point(159, 375);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(74, 30);
+            this.buttonSave.TabIndex = 2;
+            this.buttonSave.Text = "&Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.CheckFileExists = true;
+            this.saveFileDialog.CreatePrompt = true;
+            this.saveFileDialog.DefaultExt = "txt";
+            this.saveFileDialog.Filter = "Text files (*.txt)|*.txt";
             // 
             // FormMain
             // 
@@ -196,6 +217,8 @@ namespace GUI
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.ComboBox comboBoxLanguages;
         private System.Windows.Forms.Button buttonMenu;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
 
