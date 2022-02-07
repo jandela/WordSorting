@@ -75,6 +75,8 @@ namespace GUI
             textBoxSortedList.Text = string.Join(Environment.NewLine, sortedList);
 
             buttonClear.Enabled = true;
+
+            buttonSave.Enabled = true;
         }
 
         
@@ -105,6 +107,7 @@ namespace GUI
         {
             textBoxSortedList.Clear();
             buttonClear.Enabled = false;
+            buttonSave.Enabled = false;
         }
 
         protected override void OnShown(EventArgs e)
@@ -116,18 +119,27 @@ namespace GUI
 
         private void buttonMenu_Click(object sender, EventArgs e)
         {
-            ClearForm();
-            // Show Initial Form (form choice)
+            SetFormToInitialState();
+
             sourceChoice.Show(this);
         }
 
-        private void ClearForm()
+        private void SetFormToInitialState()
         {
             textBoxWordList.Clear();
             textBoxSortedList.Clear();
             buttonClear.Enabled = false;
             buttonSort.Enabled = false;
+            buttonSave.Enabled = false;
             Enabled = false;
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // write to a file
+            }
         }
     }
 }

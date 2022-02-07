@@ -172,10 +172,10 @@ namespace GUI
             this.buttonSave.TabIndex = 2;
             this.buttonSave.Text = "&Save";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // saveFileDialog
             // 
-            this.saveFileDialog.CheckFileExists = true;
             this.saveFileDialog.CreatePrompt = true;
             this.saveFileDialog.DefaultExt = "txt";
             this.saveFileDialog.Filter = "Text files (*.txt)|*.txt";

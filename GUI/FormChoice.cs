@@ -23,24 +23,23 @@ namespace GUI
 
         private void buttonBrowse_Click(object sender, EventArgs e)
         {
-            DialogResult result = this.openFileDialog.ShowDialog();
+            DialogResult result = openFileDialog.ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                this.textBoxFile.Text = this.openFileDialog.FileName;
+                textBoxFile.Text = openFileDialog.FileName;
                 EnableMainForm(textBoxFile.Text);
-                // Load data to main text box
                 Hide();
             }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem.Equals("File"))
+            if (comboBoxChoice.SelectedItem.Equals("File"))
             {
                 groupBoxPath.Enabled = true;
             }
-            else
+            else if (comboBoxChoice.SelectedItem.Equals("Manual"))
             {
                 groupBoxPath.Enabled = false;
                 EnableMainForm(null);
@@ -57,6 +56,7 @@ namespace GUI
         protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
+            
             if (CloseMainForm != null)
                 CloseMainForm(this, EventArgs.Empty);
 

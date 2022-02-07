@@ -30,7 +30,7 @@ namespace GUI
         private void InitializeComponent()
         {
             this.groupBoxChoice = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxChoice = new System.Windows.Forms.ComboBox();
             this.groupBoxPath = new System.Windows.Forms.GroupBox();
             this.buttonBrowse = new System.Windows.Forms.Button();
             this.textBoxFile = new System.Windows.Forms.TextBox();
@@ -42,7 +42,7 @@ namespace GUI
             // 
             // groupBoxChoice
             // 
-            this.groupBoxChoice.Controls.Add(this.comboBox1);
+            this.groupBoxChoice.Controls.Add(this.comboBoxChoice);
             this.groupBoxChoice.Location = new System.Drawing.Point(39, 37);
             this.groupBoxChoice.Name = "groupBoxChoice";
             this.groupBoxChoice.Size = new System.Drawing.Size(280, 106);
@@ -50,17 +50,17 @@ namespace GUI
             this.groupBoxChoice.TabStop = false;
             this.groupBoxChoice.Text = "&Select the source of data:";
             // 
-            // comboBox1
+            // comboBoxChoice
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxChoice.FormattingEnabled = true;
+            this.comboBoxChoice.Items.AddRange(new object[] {
             "File",
             "Manual"});
-            this.comboBox1.Location = new System.Drawing.Point(22, 45);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(230, 24);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBoxChoice.Location = new System.Drawing.Point(22, 45);
+            this.comboBoxChoice.Name = "comboBoxChoice";
+            this.comboBoxChoice.Size = new System.Drawing.Size(230, 24);
+            this.comboBoxChoice.TabIndex = 0;
+            this.comboBoxChoice.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // groupBoxPath
             // 
@@ -123,7 +123,6 @@ namespace GUI
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Word Sorter";
-            //this.Load += new System.EventHandler(this.FormChoice_Load);
             this.groupBoxChoice.ResumeLayout(false);
             this.groupBoxPath.ResumeLayout(false);
             this.groupBoxPath.PerformLayout();
@@ -134,7 +133,7 @@ namespace GUI
         #endregion
 
         private System.Windows.Forms.GroupBox groupBoxChoice;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxChoice;
         private System.Windows.Forms.GroupBox groupBoxPath;
         private System.Windows.Forms.Button buttonBrowse;
         private System.Windows.Forms.TextBox textBoxFile;
