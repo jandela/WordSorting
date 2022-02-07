@@ -16,5 +16,15 @@ namespace GUI
         {
             InitializeComponent();
         }
+
+        private void buttonBrowse_Click(object sender, EventArgs e)
+        {
+            DialogResult result = this.openFileDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                this.textBoxFile.Text = this.openFileDialog.FileName;
+            }
+        }
     }
 }

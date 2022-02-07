@@ -32,10 +32,10 @@ namespace GUI
             this.groupBoxChoice = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.labelFile = new System.Windows.Forms.Label();
-            this.textBoxFile = new System.Windows.Forms.TextBox();
             this.buttonBrowse = new System.Windows.Forms.Button();
-            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.textBoxFile = new System.Windows.Forms.TextBox();
+            this.labelFile = new System.Windows.Forms.Label();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBoxChoice.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -66,29 +66,13 @@ namespace GUI
             this.groupBox1.Controls.Add(this.buttonBrowse);
             this.groupBox1.Controls.Add(this.textBoxFile);
             this.groupBox1.Controls.Add(this.labelFile);
+            this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(40, 168);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(279, 77);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "&Choose path to a file:";
-            // 
-            // labelFile
-            // 
-            this.labelFile.AutoSize = true;
-            this.labelFile.Location = new System.Drawing.Point(14, 36);
-            this.labelFile.Name = "labelFile";
-            this.labelFile.Size = new System.Drawing.Size(43, 21);
-            this.labelFile.TabIndex = 0;
-            this.labelFile.Text = "&File:";
-            // 
-            // textBoxFile
-            // 
-            this.textBoxFile.Location = new System.Drawing.Point(51, 36);
-            this.textBoxFile.Name = "textBoxFile";
-            this.textBoxFile.ReadOnly = true;
-            this.textBoxFile.Size = new System.Drawing.Size(167, 22);
-            this.textBoxFile.TabIndex = 1;
             // 
             // buttonBrowse
             // 
@@ -99,17 +83,36 @@ namespace GUI
             this.buttonBrowse.TabIndex = 2;
             this.buttonBrowse.Text = "...";
             this.buttonBrowse.UseVisualStyleBackColor = true;
+            this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
             // 
-            // folderBrowserDialog
+            // textBoxFile
             // 
-            this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
-            this.folderBrowserDialog.SelectedPath = "D:\\Vsite\\seminar";
+            this.textBoxFile.Location = new System.Drawing.Point(51, 36);
+            this.textBoxFile.Name = "textBoxFile";
+            this.textBoxFile.ReadOnly = true;
+            this.textBoxFile.Size = new System.Drawing.Size(167, 22);
+            this.textBoxFile.TabIndex = 1;
+            // 
+            // labelFile
+            // 
+            this.labelFile.AutoSize = true;
+            this.labelFile.Location = new System.Drawing.Point(14, 36);
+            this.labelFile.Name = "labelFile";
+            this.labelFile.Size = new System.Drawing.Size(34, 17);
+            this.labelFile.TabIndex = 0;
+            this.labelFile.Text = "&File:";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.DefaultExt = "txt";
+            this.openFileDialog.Filter = "Text files (*.txt)|*.txt";
+            this.openFileDialog.InitialDirectory = "D:\\Vsite\\seminar";
             // 
             // FormChoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 254);
+            this.ClientSize = new System.Drawing.Size(362, 284);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxChoice);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -133,6 +136,6 @@ namespace GUI
         private System.Windows.Forms.Button buttonBrowse;
         private System.Windows.Forms.TextBox textBoxFile;
         private System.Windows.Forms.Label labelFile;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
