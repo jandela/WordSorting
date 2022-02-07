@@ -123,7 +123,7 @@ namespace GUI
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Word Sorter";
-            this.Load += new System.EventHandler(this.FormChoice_Load);
+            //this.Load += new System.EventHandler(this.FormChoice_Load);
             this.groupBoxChoice.ResumeLayout(false);
             this.groupBoxPath.ResumeLayout(false);
             this.groupBoxPath.PerformLayout();

@@ -17,6 +17,10 @@ namespace GUI
             InitializeComponent();
         }
 
+        public delegate void SendPathHandler(object sender, string path);
+        public event SendPathHandler ChoiceMade;
+        public event EventHandler CloseMainForm;
+
         private void buttonBrowse_Click(object sender, EventArgs e)
         {
             DialogResult result = this.openFileDialog.ShowDialog();
@@ -24,15 +28,10 @@ namespace GUI
             if (result == DialogResult.OK)
             {
                 this.textBoxFile.Text = this.openFileDialog.FileName;
+                EnableMainForm(textBoxFile.Text);
                 // Load data to main text box
                 Hide();
             }
-        }
-
-        private void FormChoice_Load(object sender, EventArgs e)
-        {
-            // Enable Main form
-            Hide();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,9 +43,23 @@ namespace GUI
             else
             {
                 groupBoxPath.Enabled = false;
-                // Enable Main form
+                EnableMainForm(null);
                 Hide();
             }
+        }
+
+        private void EnableMainForm(string path)
+        {
+            if (ChoiceMade != null)
+                ChoiceMade(this, path);
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            if (CloseMainForm != null)
+                CloseMainForm(this, EventArgs.Empty);
+
         }
     }
 }
