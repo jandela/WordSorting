@@ -82,5 +82,13 @@ namespace GUI
             textBoxSortedList.Clear();
             buttonClear.Enabled = false;
         }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            FormChoice sourceChoice = new FormChoice();
+            sourceChoice.Location = this.Location;
+            sourceChoice.Show();
+        }
     }
 }
