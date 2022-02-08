@@ -128,6 +128,7 @@ namespace GUI
         {
             textBoxWordList.Clear();
             textBoxSortedList.Clear();
+            comboBoxLanguages.SelectedItem = null;
             buttonClear.Enabled = false;
             buttonSort.Enabled = false;
             buttonSave.Enabled = false;
@@ -138,7 +139,13 @@ namespace GUI
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // write to a file
+                string fileName = saveFileDialog.FileName;
+                using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                {
+                    StreamWriter sw = new StreamWriter(fs);
+                    sw.WriteLine(textBoxSortedList.Text);
+                    sw.Flush();
+                }
             }
         }
     }

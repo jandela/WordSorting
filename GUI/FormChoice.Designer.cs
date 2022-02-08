@@ -107,7 +107,6 @@ namespace GUI
             // 
             this.openFileDialog.DefaultExt = "txt";
             this.openFileDialog.Filter = "Text files (*.txt)|*.txt";
-            this.openFileDialog.InitialDirectory = "D:\\Vsite\\seminar";
             // 
             // FormChoice
             // 
