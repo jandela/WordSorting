@@ -22,7 +22,6 @@ namespace GUI
             this.comboBoxLanguages.Items.AddRange(languageList.ToArray());
         }
 
-        private FormChoice sourceChoice; 
         private readonly CultureInfo[] Languages;
         private CultureInfo language;
         private List<string> sortedList;
@@ -79,17 +78,6 @@ namespace GUI
         {
             textBoxSortedList.Clear();
             buttonClear.Enabled = false;
-        }
-
-        private void SetFormToInitialState()
-        {
-            textBoxWordList.Clear();
-            textBoxSortedList.Clear();
-            comboBoxLanguages.SelectedItem = null;
-            buttonClear.Enabled = false;
-            buttonSort.Enabled = false;
-            //buttonSave.Enabled = false;
-            Enabled = false;
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
