@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Globalization;
 using System.IO;
-using System.Threading.Tasks;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GUI
@@ -17,9 +13,6 @@ namespace GUI
         public FormMain()
         {
             InitializeComponent();
-            sourceChoice = new FormChoice();
-            sourceChoice.ChoiceMade += SourceChoice_ChoiceMade;
-            sourceChoice.CloseMainForm += SourceChoice_CloseMainForm;
             Languages = CultureInfo.GetCultures(CultureTypes.NeutralCultures);
             IEnumerable<string> allCultures = Languages.Select(lang => lang.EnglishName);
             var languageList = from lang in allCultures
@@ -29,26 +22,6 @@ namespace GUI
             this.comboBoxLanguages.Items.AddRange(languageList.ToArray());
         }
 
-        private void SourceChoice_CloseMainForm(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void SourceChoice_ChoiceMade(object sender, string filePath)
-        {
-            if (filePath != null)
-            {
-                using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
-                {
-                    TextReader tr = new StreamReader(fs);
-                    textBoxWordList.Text = tr.ReadToEnd();
-                }
-            }
-
-            Enabled = true;
-        }
-
-        private FormChoice sourceChoice; 
         private readonly CultureInfo[] Languages;
         private CultureInfo language;
         private List<string> sortedList;
@@ -75,8 +48,6 @@ namespace GUI
             textBoxSortedList.Text = string.Join(Environment.NewLine, sortedList);
 
             buttonClear.Enabled = true;
-
-            buttonSave.Enabled = true;
         }
 
         
@@ -107,35 +78,25 @@ namespace GUI
         {
             textBoxSortedList.Clear();
             buttonClear.Enabled = false;
-            buttonSave.Enabled = false;
         }
 
-        protected override void OnShown(EventArgs e)
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            base.OnShown(e);
-            sourceChoice.Location = this.Location;
-            sourceChoice.Show(this);
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+                if (filePath != null)
+                {
+                    using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                    {
+                        TextReader tr = new StreamReader(fs);
+                        textBoxWordList.Text = tr.ReadToEnd();
+                    }
+                }
+            }
         }
 
-        private void buttonMenu_Click(object sender, EventArgs e)
-        {
-            SetFormToInitialState();
-
-            sourceChoice.Show(this);
-        }
-
-        private void SetFormToInitialState()
-        {
-            textBoxWordList.Clear();
-            textBoxSortedList.Clear();
-            comboBoxLanguages.SelectedItem = null;
-            buttonClear.Enabled = false;
-            buttonSort.Enabled = false;
-            buttonSave.Enabled = false;
-            Enabled = false;
-        }
-
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
